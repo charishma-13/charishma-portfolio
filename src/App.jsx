@@ -121,10 +121,16 @@ const Portfolio = () => {
             </span>
           </div>
           <div className="flex gap-6">
-            {['Home', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
+            {['Home', 'Experience', 'Skills', 'Projects', 'Education', 'Contact'].map((item) => (
               <button
                 key={item}
-                onClick={() => setActiveSection(item.toLowerCase())}
+                onClick={() => {
+                  setActiveSection(item.toLowerCase());
+                  document.getElementById(item.toLowerCase())?.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }}
                 className={`hover:text-cyan-400 transition-all duration-300 ${
                   activeSection === item.toLowerCase() ? 'text-cyan-400 font-semibold' : ''
                 }`}
@@ -137,7 +143,7 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
+      <section id="home" className="relative min-h-screen flex items-center justify-center px-6 pt-20">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8 animate-fade-in">
             <div className="inline-block p-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full mb-6 animate-spin-slow">
@@ -185,7 +191,7 @@ const Portfolio = () => {
       </section>
 
       {/* Experience Section */}
-      <section className="py-20 px-6 relative">
+      <section id="experience" className="py-20 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-12">
             <Briefcase className="w-8 h-8 text-cyan-400" />
@@ -218,7 +224,7 @@ const Portfolio = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-6 relative">
+      <section id="skills" className="py-20 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-12">
             <Database className="w-8 h-8 text-cyan-400" />
@@ -251,7 +257,7 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-6 relative">
+      <section id="projects" className="py-20 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-12">
             <Code className="w-8 h-8 text-cyan-400" />
@@ -285,17 +291,31 @@ const Portfolio = () => {
       </section>
 
       {/* Education & Certifications */}
-      <section className="py-20 px-6 relative">
+      <section id="education" className="py-20 px-6 relative">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-8">
               <GraduationCap className="w-8 h-8 text-cyan-400" />
               <h2 className="text-3xl font-bold">Education</h2>
             </div>
-            <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
-              <h3 className="text-xl font-bold text-cyan-400 mb-2">B.Tech in AI & Data Science</h3>
-              <p className="text-slate-300 mb-1">Reva University, Bangalore</p>
-              <p className="text-slate-400">2021-2025 | CGPA: 8.4/10</p>
+            <div className="space-y-6">
+              <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+                <h3 className="text-xl font-bold text-cyan-400 mb-2">B.Tech in AI & Data Science</h3>
+                <p className="text-slate-300 mb-1">Reva University, Bangalore</p>
+                <p className="text-slate-400">2021-2025 | CGPA: 8.4/10</p>
+              </div>
+              
+              <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+                <h3 className="text-xl font-bold text-cyan-400 mb-2">12th Grade (MPC)</h3>
+                <p className="text-slate-300 mb-1">Narayana Junior College, Andhra Pradesh</p>
+                <p className="text-slate-400">2019-2021 | 90.3%</p>
+              </div>
+              
+              <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-300">
+                <h3 className="text-xl font-bold text-cyan-400 mb-2">10th Grade (SSC)</h3>
+                <p className="text-slate-300 mb-1">Oxford Public School, Maharashtra</p>
+                <p className="text-slate-400">2019 | 79%</p>
+              </div>
             </div>
           </div>
           
@@ -313,6 +333,49 @@ const Portfolio = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 relative">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-12">
+            <Mail className="w-8 h-8 text-cyan-400" />
+            <h2 className="text-4xl font-bold">Get In Touch</h2>
+          </div>
+          
+          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-12 hover:border-cyan-500/50 transition-all duration-300">
+            <div className="text-center max-w-3xl mx-auto">
+              <p className="text-xl text-slate-300 mb-8">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <a href="mailto:charishmanaidu.03@gmail.com" className="bg-slate-800/50 hover:bg-slate-800 p-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                  <Mail className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
+                  <h3 className="font-semibold text-white mb-2">Email</h3>
+                  <p className="text-slate-400 text-sm">charishmanaidu.03@gmail.com</p>
+                </a>
+                
+                <a href="tel:+919321528962" className="bg-slate-800/50 hover:bg-slate-800 p-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                  <Phone className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
+                  <h3 className="font-semibold text-white mb-2">Phone</h3>
+                  <p className="text-slate-400 text-sm">+91 9321528962</p>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/charishma1303" target="_blank" rel="noopener noreferrer" className="bg-slate-800/50 hover:bg-slate-800 p-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                  <Linkedin className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
+                  <h3 className="font-semibold text-white mb-2">LinkedIn</h3>
+                  <p className="text-slate-400 text-sm">Connect with me</p>
+                </a>
+              </div>
+              
+              <div className="flex items-center justify-center gap-2 text-slate-400">
+                <MapPin className="w-5 h-5 text-cyan-400" />
+                <span>Based in Bangalore, India</span>
+              </div>
             </div>
           </div>
         </div>
